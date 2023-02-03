@@ -1,0 +1,16 @@
+<h2>Hello, I'm da hero component!</h2>
+{{ osomEmoji() }}
+<b>{{ hero.name }}</b>
+<p>Power level:  {{ hero.powerLevel }}</p>
+ 
+<iframe *ngIf="hero.amv" width="560" height="315" [src]="getAmv(hero)" title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+>
+</iframe>
+<ul>
+    <li *ngFor="let img of hero.pics">
+        <img [src]="img" />
+    </li>
+</ul>

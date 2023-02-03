@@ -1,18 +1,28 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { HelloComponent } from './hello.component';
+
+
+const routes: Routes = [
+  {
+    path: '',
+    component: HelloComponent,
+  },
+  {
+    path: 'heroes',
+    loadChildren: () =>
+      import('./modules/hero/hero.module').then((m) => m.HeroModule),
+  },
+];
+
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, HelloComponent],
+  imports: [CommonModule, BrowserModule, RouterModule.forRoot(routes)],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
